@@ -5,18 +5,18 @@ def overlay(mask, spectrumImage, coefficient):
 	"""
 	Wendet eine Spektrummaske auf ein Fourierspektrum an, indem es die differenz der einer und des zu maskierenden Spektrums bildet,
 	um so geziehlte Fourierkoeffizeinten auf 0 zu setzen.
-	Die maske ist dabei eine bearbeitete version eins Bildes des Spektrum!
+	Die Maske ist dabei eine bearbeitete Version eines Bildes des Spektrum!
 	Zu "löschende" koeffizienten sind dabei durch schwarze Pixel repräsentiert.
 	mask = Maske
 	spectrumImage = Bild des Fourierspektrums
-	coefficient = MAtrix in der die FOurierkoeffizienten gespeichert sind
+	coefficient = Matrix in der die Fourierkoeffizienten gespeichert sind
 
 	mask, spectrumImage müssen array_like datenstrukturen sein (siehe numpy.array dokumentation) und müssen die selbe größe haben.
 	coefficient ist ein 2d numpy array des komplexen datentyps.
 	"""
 	maskArr = np.array(mask)
 	spectrumArr = np.array(spectrumImage)
-	difference = maskArr - spectrumArr #die differenze von mask und spectrumImage gibt an welche koeffizienten auf 0 gesetzt werden sollen.
+	difference = maskArr - spectrumArr #die differenze von mask und spectrumImage gibt an welche Koeffizienten auf 0 gesetzt werden sollen.
 	difference = np.fliplr(difference)
 	N,M = maskArr.shape
 	for m in range(M): #für jeden Pixel wiederhole
@@ -27,7 +27,7 @@ def overlay(mask, spectrumImage, coefficient):
 
 def overlay2(mask, coeffcient):
 	"""
-	Wendet eine Maske auf ein Fourierspektrum an. Die Maske ist hier anders als bei overlay ein schwarzweiß bild.
+	Wendet eine Maske auf ein Fourierspektrum an. Die Maske ist hier anders als bei overlay ein schwarzweiß Bild.
 	Weiße Pixel stehen dabei für koeffizienten die auf 0 gesetzt werden sollen. Schwarz dafür das sie unverändert bleiben sollen.
 	"""
 	maskArr = np.array(mask)
@@ -63,14 +63,14 @@ def mixMagnitudePhase(spectrum1, spectrum2):
 
 def mixImage(spectrum1, spectrum2, threshold):
 	"""
-	Vermixt 2 zentralisierte Spektra, indem bis zu einer bestimmte Frequenz die Fourierkoeffizienten des einen Soeltrum und nach der Frequenz des 2ten Spektrum
+	Vermixt 2 zentralisierte Spektra, indem bis zu einer bestimmte Frequenz die Fourierkoeffizienten von spectrum1 verwendet und danach die von spectrum2 verwendet.
 	"""
 	N, M = spectrum1.shape
 	coeffiecient = np.zeros((N, M), dtype=complex)
 	for m in range(M):
 		for n in range(N):
-			if np.sqrt(((m-(M/2))**2)+((n-(N/2))**2)) > threshold: #der linke Teil des Vergeleichs berechnet den Abstand des Eintrages von der Mitte.
-																	# Es Gillt je weiter von der Mitte entfernt desto höher die Frequenz
+			if np.sqrt(((m-(M/2))**2)+((n-(N/2))**2)) > threshold: #der linke Teil des Vergeleichs berechnet den Abstand des eintrages von der Mitte.
+									       #Es Gillt je weiter der Eintrag von der Mitte entfernt ist desto höher die Frequenz
 				coeffiecient[n][m] = spectrum2[n][m]
 			else:
 				coeffiecient[n][m] = spectrum1[n][m]
