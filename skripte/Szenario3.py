@@ -4,7 +4,7 @@ import numpy.fft as fft
 import numpy as np
 import steganography as stg
 
-"""Versteckt eine Geheimbotschaft in einem Bild, durch das Anwenden einer Maske auf das Fourierspektrum"""
+"""Versteckt eine Geheimbotschaft in einem Bild, durch anwendung einer Maske auf das Fourierspektrum"""
 
 x = Image.open("bilder/kameraman.png").convert("L") #öffne kameraman.png als Luminanzbild
 x = np.array(x) #konvertiere Bild zu Matrix/ numpy 2d Array
