@@ -18,7 +18,7 @@ mask = Image.open("maske/fingerabdruckMaske.png").convert("L") #öffne fingerabd
 spectrum2 = Image.open("spektrum/fingerabdruckSpektrum.png").convert("L") #öffne das Referenzspektrum
 stg.overlay(mask, spectrum2, spectrum) #wende die Maske auf das Spektrum an (spektrum2 dient als referenz Spektrum)
 
-f.highpass(spectrum, 5) #wende den Highpass Filter mit Filterfrequenz 3 an
+f.highpass(spectrum, 5) #wende den highpass Filter mit Filterfrequenz 5 an
 
 createimages.plotFrequencySpectrum(np.abs(spectrum)) #zeige das neue Amplitudenspektrum
 
