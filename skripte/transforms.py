@@ -4,8 +4,8 @@ from numpy import pi as pi
 
 def dft2d(image):
 	"""
-	Diese methode berechnet die Diskrete-Fouriertransformation eines Bildes
-	sollte nicht für Bilder größer als 10x10 verwendet werden da die Laufzeit O(n**4) beträgt.
+	Diese Methode berechnet die Diskrete-Fouriertransformation eines Bildes
+	sollte nicht für Bilder größer als 10x10 Pixel verwendet werden da die Laufzeit O(n**4) beträgt.
 	"""
 	imageArr = np.array(image)
 	N, M = imageArr.shape #height(y), width(x) M = x N = y
