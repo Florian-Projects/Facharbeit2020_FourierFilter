@@ -35,7 +35,7 @@ def plotShiftedSpectrum(coefficient):
 def createImage(simageArr):
 	"""
 	Diese Methode zeigt eine 2-dimensionale Matrix als Luminanzbild
-	Parameter ist ein numpy2d Array
+	Parameter ist ein numpy 2d Array
 	"""
 
 	plt.subplot(1, 1, 1)
@@ -46,7 +46,7 @@ def createImage(simageArr):
 def exportImage(simageArr):
 	"""
 	Diese Methode exportiert eine 2-dimensionale Matrix als Luminanzbild unter dem namen export.png.
-	Falls export.png bereits existiert wird es Überschrieben!
+	Falls export.png bereits existiert wird es überschrieben!
 	Parameter ist ein numpy 2d Array
 	"""
 	N, M = simageArr.shape
